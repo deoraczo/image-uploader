@@ -13,6 +13,12 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+input:focus, button:focus {
+  outline: none;
+}
+button:hover {
+  background-color: #1472dc;
+}
 #app {
   display: flex;
   min-height: 100vh;

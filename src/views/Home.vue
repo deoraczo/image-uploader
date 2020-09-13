@@ -1,7 +1,8 @@
 <template>
   <main>
     <!-- <Upload /> -->
-    <Uploading />
+    <!-- <Uploading /> -->
+    <Uploaded />
   </main>
 </template>
 
@@ -10,11 +11,13 @@ import { Component, Vue } from 'vue-property-decorator';
 import HelloWorld from "@/components/HelloWorld.vue";
 import Upload from "@/components/Upload.vue";
 import Uploading from '@/components/Uploading.vue';
+import Uploaded from '@/components/Uploaded.vue';
 
 @Component({
   components: {
     Upload,
-    Uploading
+    Uploading,
+    Uploaded
   }
 })
 export default class Home extends Vue{
