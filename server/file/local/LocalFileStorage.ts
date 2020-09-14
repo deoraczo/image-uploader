@@ -16,5 +16,4 @@ export class LocalFileStorage implements FileStorage {
         })
         return `/disk/${newNameImage}`;
     }
-
 }

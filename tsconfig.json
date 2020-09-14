@@ -7,7 +7,7 @@
     "importHelpers": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "experimentalDecorators": true,        /* Enables experimental support for ES7 decorators. */
+    "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
