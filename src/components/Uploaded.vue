@@ -1,7 +1,10 @@
 <template>
   <div class="card fadeIn">
     <div class="card_header">
-      <div class="text--center">
+      <button class="btn btn_back" @click="backUpload()">
+        <i class="material-icons">keyboard_backspace</i>
+      </button>
+      <div class="text--center success">
         <i class="material-icons">check_circle</i>
       </div>
       <h1 class="card_header--text text--center">Uploaded Successfully!</h1>
@@ -40,14 +43,20 @@ export default class Uploaded extends Vue {
       document.execCommand("copy");
     }
   }
+
+  backUpload(): void {
+    this.upload();
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 .card_header {
-  i {
-    color: #219653;
-    font-size: 35px;
+  .success {
+    i {
+      color: #219653;
+      font-size: 35px;
+    }
   }
 }
 .preview {

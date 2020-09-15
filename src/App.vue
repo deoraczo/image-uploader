@@ -16,9 +16,6 @@
 input:focus, button:focus {
   outline: none;
 }
-button:hover {
-  background-color: #1472dc;
-}
 #app {
   display: flex;
   min-height: 100vh;
@@ -68,10 +65,21 @@ button:hover {
   border-radius: 8px;
   border: none;
   cursor: pointer;
+  max-height: 34px;
 
   &_primary {
     color: #ffffff;
     background-color: #2f80ed;
+    &:hover {
+      background-color: #1472dc;
+    }
+  }
+  &_back {
+    display: flex;
+    align-items: center;
+    &:hover {
+      background-color: #eaeaea;
+    }
   }
 }
 
