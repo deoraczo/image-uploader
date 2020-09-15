@@ -51,6 +51,9 @@ export default class Upload extends Vue {
     changeHandled(event: any) {
         const { target } = event;
         const [file] = target.files;
+        if(!this.validateImage(file)) {
+            return;
+        }
         const formData = new FormData();
         formData.append('image', file);
         this.uploading({
@@ -61,6 +64,11 @@ export default class Upload extends Vue {
 
     selectImage() {
         this.$refs.fileInput.click();
+    }
+
+    validateImage(file: File): boolean {
+        const typeImages = ["image/jpeg", "image/png", "image/jpg"];
+        return typeImages.indexOf(file.type) > -1;
     }
 
 }
@@ -81,6 +89,9 @@ export default class Upload extends Vue {
     width: 100%;
     padding-top: 36px;
     padding-bottom: 36px;
+    &:hover{
+        background: #00ff1614;
+    }
     &--cover {
         margin-bottom: 36px;
     }
