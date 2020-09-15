@@ -10,9 +10,10 @@ export class UploadController {
 
     upload = (req: Request, res: Response): Response => {
         const imageUrl = this.fileStorage.saveUploaded(req.file);
+        const urlRequest = `${req.protocol}://${req.get('host')}`
         return res.json({
             message: 'Image uploaded successfully',
-            imageUrl:  imageUrl
+            imageUrl:  `${urlRequest}/${imageUrl}`
         });
     }
 }

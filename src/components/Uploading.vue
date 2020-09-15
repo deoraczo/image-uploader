@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card fadeIn">
     <div class="card_header">
       <h1 class="card_header--text">Uploading...</h1>
     </div>
@@ -13,9 +13,40 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import { Getter, Action } from "vuex-class";
+import { UploadService } from "@/services/upload.service";
+import { lazyInject } from "@/ioc/container";
+import { TYPES } from "../ioc/types";
 
 @Component({})
-export default class Uploading extends Vue {}
+export default class Uploading extends Vue {
+
+  @lazyInject(TYPES.UPLOAD_SERVICE)
+  private uploadService!: UploadService;
+
+  @Getter("uploader/getFormData")
+  public formData!: {};
+
+  @Action('uploader/uploaded')
+  public uploaded!: (payload: {}) => void
+
+  @Action('uploader/upload')
+  private upload!: () => void;
+
+  mounted(): void {
+    this.uploadService.upload(this.formData)
+      .then(({ imageUrl }) => {
+        this.uploaded({
+          status: 'Uploaded',
+          previewUrl: imageUrl
+        })
+      })
+      .catch(err => {
+        console.log(err);
+        this.upload();
+      })
+  }
+}
 </script>
 
 <style lang="scss" scoped>

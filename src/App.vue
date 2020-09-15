@@ -60,8 +60,6 @@ button:hover {
     flex-direction: column;
     align-items: center;
   }
-  &_body {
-  }
 }
 .btn {
   padding: 8px 16px;
@@ -74,6 +72,19 @@ button:hover {
   &_primary {
     color: #ffffff;
     background-color: #2f80ed;
+  }
+}
+
+.fadeIn {
+  animation: fade-in 2s;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 </style>

@@ -14,6 +14,6 @@ export class LocalFileStorage implements FileStorage {
                 console.log("Image upload failed.");
             }
         })
-        return `/disk/${newNameImage}`;
+        return `disk/${newNameImage}`;
     }
 }

@@ -1,3 +1,3 @@
 export const TYPES = {
-    FILE_STORAGE: Symbol("FILE_STORAGE")
+    UPLOAD_SERVICE: Symbol("UPLOAD_SERVICE")
 }

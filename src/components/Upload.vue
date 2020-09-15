@@ -1,5 +1,5 @@
 <template>
-    <div class="card">
+    <div class="card fadeIn">
         <div class="card_header">
             <h1 class="card_header--text text--center">Upload your image</h1>
         </div>
@@ -19,20 +19,50 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Emit } from 'vue-property-decorator';
+import axios from 'axios';
+import { lazyInject } from '@/ioc/container';
+import { UploadService } from '../services/upload.service';
+import { TYPES } from '../ioc/types';
+import { mapActions } from 'vuex'
 
+import { namespace } from 'vuex-class'
+const uploader = namespace('uploader')
+
+@Component({})
 export default class Upload extends Vue {
+
+    @lazyInject(TYPES.UPLOAD_SERVICE)
+    private uploadService!: UploadService;
+
     $refs!: {
         fileInput: HTMLInputElement
     }
 
+    @uploader.State
+    private status!: String;
+
+    @uploader.Action
+    uploading!: (payload: {}) => void
+
+    @uploader.Action
+    setFile!: (file: any) => void;
+
     changeHandled(event: any) {
-        console.log(event);
+        const { target } = event;
+        const [file] = target.files;
+        const formData = new FormData();
+        formData.append('image', file);
+        this.uploading({
+            status: 'Uploading',
+            formData: formData
+        });
     }
 
     selectImage() {
         this.$refs.fileInput.click();
     }
+
 }
 
 
