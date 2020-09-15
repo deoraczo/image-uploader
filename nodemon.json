@@ -2,7 +2,7 @@
     "watch": ["server"],
     "ext": "ts",
     "ignore": [
-        "src/**/*.spec.ts"
+        "**/**/*.spec.ts"
     ],
-    "exec": "ts-node"
+    "exec": "ts-node --project ./tsconfig.server.json --files ./server/index.ts"
 }
