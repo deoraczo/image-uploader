@@ -13,7 +13,8 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
-input:focus, button:focus {
+input:focus,
+button:focus {
   outline: none;
 }
 #app {
@@ -22,9 +23,19 @@ input:focus, button:focus {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  max-width: var(--max-width);
+  margin-left: 1rem;
+  margin-right: 1rem;
+  width: calc(100% - 2rem);
+
+  @media screen and (min-width: 1200px) {
+    margin: 0 auto;
+    width: 100%;
+  }
 }
 :root {
   --letter-spacing: -0.035em;
+  --max-width: 1200px;
 }
 .text--center {
   text-align: center;
@@ -81,6 +92,18 @@ input:focus, button:focus {
       background-color: #eaeaea;
     }
   }
+}
+
+.title {
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: var(--letter-spacing);
+  color: #4f4f4f;
+}
+
+.footer--title {
+  margin-top: 3rem;
+  display: block;
 }
 
 .fadeIn {
