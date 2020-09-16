@@ -1,18 +1,28 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
+  <main>
+    <component :is="status"/>
+  </main>
 </template>
 
-<script>
-// @ is an alias to /src
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
 import HelloWorld from "@/components/HelloWorld.vue";
+import Upload from "@/components/Upload.vue";
+import Uploading from '@/components/Uploading.vue';
+import Uploaded from '@/components/Uploaded.vue';
+import { Getter } from 'vuex-class'
 
-export default {
-  name: "Home",
+@Component({
   components: {
-    HelloWorld
+    Upload,
+    Uploading,
+    Uploaded
   }
+})
+export default class Home extends Vue{
+
+  @Getter('uploader/getStatus')
+  public status!: string;
+
 };
 </script>
