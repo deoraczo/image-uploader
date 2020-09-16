@@ -5,7 +5,8 @@ import { resolveClientPath, resolveDiskPath } from './utils';
 
 const app = express();
 
-app.set('port', process.env.PORT || 4000);
+const PORT = process.env.PORT || 9000;
+
 
 app.use(express.static(resolveClientPath()));
 app.use(morgan('dev'));
@@ -16,6 +17,6 @@ app.get('*', (req, res) => {
     res.sendFile(resolveClientPath() + '/index.html');
 })
 
-app.listen(app.get('port'), () => {
-    console.log('Application running on PORT: ' + app.get('port'))
+app.listen(PORT, () => {
+    console.log('Application running on PORT: ' + PORT)
 })
