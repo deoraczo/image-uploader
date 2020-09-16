@@ -1,24 +1,21 @@
 import express from "express";
-import path from 'path';
 import morgan from 'morgan';
 import routes from './routes';
+import { resolveClientPath, resolveDiskPath } from './utils';
 
 const app = express();
 
+app.set('port', process.env.PORT || 4000);
 
-
-
-//app.use(express.static('dist'));
+app.use(express.static(resolveClientPath()));
 app.use(morgan('dev'));
 
-app.use('/disk', express.static(path.resolve('disk')));
-
+app.use('/disk', express.static(resolveDiskPath()));
 app.use('/api', routes);
+app.get('*', (req, res) => {
+    res.sendFile(resolveClientPath() + '/index.html');
+})
 
-/*app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
-})*/
-
-app.listen(9000, () => {
-    console.log('Application running on PORT: 9000')
+app.listen(app.get('port'), () => {
+    console.log('Application running on PORT: ' + app.get('port'))
 })
