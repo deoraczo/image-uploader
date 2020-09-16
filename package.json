@@ -13,7 +13,7 @@
     "dev:server": "nodemon server/index.ts",
     "build:server": "rimraf dist/server && tsc -p tsconfig.server.json",
     "lint": "vue-cli-service lint",
-    "start": "node dist/server/index.js",
+    "start": "node app.js",
     "heroku-postbuild": "npm run build"
 
   },
